@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.15.4" />
+    <PackageReference Include="FixedMathSharp" Version="1.3.3" />
   </ItemGroup>
 
   <ItemGroup>

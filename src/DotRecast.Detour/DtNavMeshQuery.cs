@@ -24,6 +24,7 @@ using System.Diagnostics;
 using DotRecast.Core;
 using DotRecast.Core.Collections;
 using DotRecast.Core.Numerics;
+using FixedMathSharp;
 
 namespace DotRecast.Detour
 {
@@ -253,8 +254,8 @@ namespace DotRecast.Detour
             DtNode startNode = m_nodePool.GetNode(startRef);
             startNode.pos = centerPos;
             startNode.pidx = 0;
-            startNode.cost = 0;
-            startNode.total = 0;
+            startNode.cost = (Fixed64)(0);
+            startNode.total = (Fixed64)(0);
             startNode.id = startRef;
             startNode.flags = DtNodeFlags.DT_NODE_OPEN;
             m_openList.Push(startNode);
@@ -379,7 +380,7 @@ namespace DotRecast.Detour
                         neighbourNode.pos = RcVec3f.Lerp(va, vb, 0.5f);
                     }
 
-                    float total = bestNode.total + RcVec3f.Distance(bestNode.pos, neighbourNode.pos);
+                    Fixed64 total = bestNode.total + RcVec3f.Distance(bestNode.pos, neighbourNode.pos);
 
                     // The node is already in open list and the new result is worse, skip.
                     if ((neighbourNode.flags & DtNodeFlags.DT_NODE_OPEN) != 0 && total >= neighbourNode.total)
@@ -870,7 +871,7 @@ namespace DotRecast.Detour
             DtNode startNode = m_nodePool.GetNode(startRef);
             startNode.pos = startPos;
             startNode.pidx = 0;
-            startNode.cost = 0;
+            startNode.cost = (Fixed64)(0);
             startNode.total = RcVec3f.Distance(startPos, endPos) * DtDefaultQueryHeuristic.H_SCALE;
             startNode.id = startRef;
             startNode.flags = DtNodeFlags.DT_NODE_OPEN;

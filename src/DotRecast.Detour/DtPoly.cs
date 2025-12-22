@@ -18,6 +18,8 @@ freely, subject to the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
 */
 
+using FixedMathSharp;
+
 namespace DotRecast.Detour
 {
     /// Defines a polygon within a dtMeshTile object.
